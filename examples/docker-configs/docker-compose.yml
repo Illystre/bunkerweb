@@ -11,6 +11,7 @@ services:
       DISABLE_HOST_CHECK: yes
       USE_DEFAULT_SERVER: yes
       ALLOWED_METHODS: GET|POST|HEAD|HTTP
+      SERVER_NAME: 192.168.5.65
     restart: "unless-stopped"
     networks:
       - bw-universe
@@ -26,7 +27,7 @@ services:
     environment:
       BUNKERWEB_INSTANCES: "bunkerweb"
       MULTISITE: "yes"
-      SERVER_NAME: "app1.example.com app2.example.com" # replace with your domains
+      SERVER_NAME: "192.168.5.65" # replace with your domains
       API_WHITELIST_IP: "127.0.0.0/8 10.20.30.0/24 0.0.0.0/24"
       SERVE_FILES: "no"
       #DISABLE_DEFAULT_SERVER: "yes"
@@ -35,7 +36,7 @@ services:
       USE_GZIP: "yes"
       USE_REVERSE_PROXY: "yes"
       app1.example.com_REVERSE_PROXY_URL: "/"
-      app1.example.com_REVERSE_PROXY_HOST: "http://myapp1:8080"
+      app1.example.com_REVERSE_PROXY_HOST: "http://192.168.5.65:8080"
       app2.example.com_REVERSE_PROXY_URL: "/"
       app2.example.com_REVERSE_PROXY_HOST: "http://myapp2:8080"
       # global config applied at server context
