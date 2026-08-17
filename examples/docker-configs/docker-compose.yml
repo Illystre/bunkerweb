@@ -10,7 +10,7 @@ services:
       API_WHITELIST_IP: "127.0.0.0/8 10.20.30.0/24 0.0.0.0/24"
       DISABLE_HOST_CHECK: yes
       USE_DEFAULT_SERVER: yes
-      
+      ALLOWED_METHODS: GET|POST|HEAD|HTTP
     restart: "unless-stopped"
     networks:
       - bw-universe
