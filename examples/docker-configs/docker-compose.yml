@@ -13,6 +13,12 @@ services:
       ALLOWED_METHODS: GET|POST|HEAD|HTTP|HTTPS
       SERVER_NAME: https://bunk.hyfys.com
       REAL_IP_HEADER: X-Real-IP
+      AUTO_LETS_ENCRYPT: yes
+      USE_ANTIBOT: captcha
+      REFERRER_POLICY: no-referrer
+      USE_MODSECURITY: no
+      USE_GZIP: yes
+      USE_BROTLI: no
     restart: "unless-stopped"
     networks:
       - bw-universe
