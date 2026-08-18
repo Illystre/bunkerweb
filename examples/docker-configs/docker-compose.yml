@@ -12,6 +12,7 @@ services:
       USE_DEFAULT_SERVER: yes
       ALLOWED_METHODS: GET|POST|HEAD|HTTP|HTTPS
       SERVER_NAME: https://bunk.hyfys.com
+      REAL_IP_HEADER: X-Real-IP
     restart: "unless-stopped"
     networks:
       - bw-universe
