@@ -8,17 +8,17 @@ services:
       - "443:8443/udp" # for QUIC
     environment:
       API_WHITELIST_IP: "127.0.0.0/8 10.20.30.0/24 0.0.0.0/24"
-      DISABLE_HOST_CHECK: yes
-      USE_DEFAULT_SERVER: yes
+      DISABLE_HOST_CHECK: "yes"
+      USE_DEFAULT_SERVER: "yes"
       ALLOWED_METHODS: GET|POST|HEAD|HTTP|HTTPS
-      SERVER_NAME: https://bunk.hyfys.com
+      SERVER_NAME: "bunk.hyfys.com" # Removed https://
       REAL_IP_HEADER: X-Real-IP
-      AUTO_LETS_ENCRYPT: yes
+      AUTO_LETS_ENCRYPT: "yes"
       USE_ANTIBOT: captcha
       REFERRER_POLICY: no-referrer
-      USE_MODSECURITY: no
-      USE_GZIP: yes
-      USE_BROTLI: no
+      USE_MODSECURITY: "no"
+      USE_GZIP: "yes"
+      USE_BROTLI: "no"
     restart: "unless-stopped"
     networks:
       - bw-universe
@@ -34,16 +34,17 @@ services:
     environment:
       BUNKERWEB_INSTANCES: "bunkerweb"
       MULTISITE: "yes"
-      SERVER_NAME: "https://bunk.hyfys.com" # replace with your domains
+      SERVER_NAME: "bunk.hyfys.com" # Removed https://
       API_WHITELIST_IP: "127.0.0.0/8 10.20.30.0/24 0.0.0.0/24"
       SERVE_FILES: "no"
-      #DISABLE_DEFAULT_SERVER: "yes"
       AUTO_LETS_ENCRYPT: "yes"
       USE_CLIENT_CACHE: "yes"
       USE_GZIP: "yes"
       USE_REVERSE_PROXY: "yes"
-      app1.example.com_REVERSE_PROXY_URL: "https://bunk.hyfys.com"
-      app1.example.com_REVERSE_PROXY_HOST: "http://192.168.5.65"
+      
+      # Route your actual domain to your internal Docker container port (usually 80)
+      bunk.hyfys.com_REVERSE_PROXY_URL: "/"
+      bunk.hyfys.com_REVERSE_PROXY_HOST: "http://myapp1:80"
       
       # global config applied at server context
       CUSTOM_CONF_SERVER_HTTP_hello-world: |
